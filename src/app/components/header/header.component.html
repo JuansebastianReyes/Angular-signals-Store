@@ -2,11 +2,7 @@
   <a
     class="navbar-brand text-white"
     routerLink="store">
-    <img
-      src="assets/cody-store.png"
-      width="100px"
-      alt="Cody Store">
-    Cody's Store
+    Store
   </a>
 
   <ul class="navbar-nav">
@@ -31,7 +27,7 @@
         class="nav-link text-white flex align-items-center"
         aria-current="page"
         routerLink="cart">
-        Carrito: 0
+        Carrito: {{ cartService.totalItems() }}
       </a>
         </li>
 

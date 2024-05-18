@@ -2,28 +2,37 @@
   <div class="row">
     <div class="col-9">
       <input
-        type="email"
+        type="text"
         class="form-control"
-        id="exampleFormControlInput1"
-        placeholder="name@example.com">
+        placeholder="Ingrese la tarea"
+        [formControl]="task">
     </div>
-    <button class="btn btn-primary col-3">Agregar</button>
+    <button (click)="addTask()" class="btn btn-primary col-3">Agregar</button>
   </div>
 
-  <div class="row mt-3" *ngFor="let item of [1,1,1,1,1,1,1]">
+  <div class="row mt-3" *ngFor="let task of tasks()">
     <div class="form-check align-items-center col-9">
 
       <input
         class="form-check-input"
         type="checkbox"
-        value
-        id="flexCheckDefault">
-      <label
-        class="form-check-label"
-        for="flexCheckDefault">
-        Mi tarea
+        [value]="task.isCompleted"
+        (click)="toggleCompletedTask(task)">
+      <label class="form-check-label" [ngClass]="{ 'text-decoration-line-through':task.isCompleted }">
+        {{ task.name }}
       </label>
     </div>
-    <button class="btn btn-danger col-3">Eliminar</button>
+    <button (click)="deleteTask(task)" class="btn btn-danger col-3">Eliminar</button>
+  </div>
+  <div class="mt-2">
+    <button class="btn btn-danger" (click)="resetTask()">
+      Barrar todas las tareas
+    </button>
+  </div>
+  <div class="mt-2">
+    <p> tareas completadas {{ completedTasks().length}}</p>
+  </div>
+  <div class="mt-2">
+    <p> tareas incompleras {{ uncompletedTasks().length}}</p>
   </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CartService } from './../../services/cart.service';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,5 +10,9 @@ import { CommonModule } from '@angular/common';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
+  cartService = inject(CartService)
 
+  removeProduct(index: number) {
+    this.cartService.removeProduct(index);
+  }
 }

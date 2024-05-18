@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { CartService } from './../../services/cart.service';
+import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
@@ -10,5 +11,5 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-
+  cartService = inject(CartService);
 }
